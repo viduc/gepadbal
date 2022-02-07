@@ -63,6 +63,7 @@
 </div>
 
 L'application GEPADBAL peut être installée de deux façons différentes, soit depuis une image docker, soit sirectement sur un serveur web.
+
 <p id="serveur-web"></p>
 <div class="alert alert-primary">
   <h2>Installation sur un serveur web:</h2>
@@ -89,19 +90,18 @@ L'application GEPADBAL peut être installée de deux façons différentes, soit 
 
 Dans une console, naviguez dans le dossier web de votre serveur (par exemple ./var/www) puis cloner le dépot:
 
-	git clone https://ledepot gepadbal
+git clone https://ledepot gepadbal
 <p id="serveur-web-dependances"><a href="#top"><img src="./images/up.png" alt="up" style="width:40px;"/> HAUT</a></p>
 ### Installation des dépendances:
 
 Dans une console, entrez dans le dossier et lancer composer:
 
-	cd gepadbal 
-	
-	composer install
+cd gepadbal 
 
-><img src="./images/warning.png" alt="warning" style="width:40px;"/> Si vous rencontrez des difficultés lors de l'installation des dépendances avec composer liées à des limites php, vous pouvez utilisez un fichier [composer.phar](https://getcomposer.org/download/latest-stable/composer.phar) puis dans une commande:
+composer install
+> <img src="./images/warning.png" alt="warning" style="width:40px;"/> Si vous rencontrez des difficultés lors de l'installation des dépendances avec composer liées à des limites php, vous pouvez utilisez un fichier [composer.phar](https://getcomposer.org/download/latest-stable/composer.phar) puis dans une commande:
 >
->	php -d memory_limit=-1 composer.phar install
+> php -d memory_limit=-1 composer.phar install
 
 Lors de l'installation il vous sera demandé si vous souhaité exécuter un recipe (symfony), accepter la recette:
 
@@ -112,66 +112,60 @@ Lors de l'installation il vous sera demandé si vous souhaité exécuter un reci
 
 A la suite de l'installation des dépendances (via composer), un script sera exécuté automatiquement pour installer  et compiler les autres dépendances javascript.
 
-><img src="./images/warning.png" alt="warning" style="width:40px;"/> Si ce script échoue (npm, node ou yarn non installé), vous pourrez le relancer directement ce script vai la console:
->
-	sh gepadbal.sh
+> <img src="./images/warning.png" alt="warning" style="width:40px;"/> Si ce script échoue (npm, node ou yarn non installé), vous pourrez le relancer directement ce script vai la console:
 
-><img src="./images/warning.png" alt="warning" style="width:40px;"/> Si vous rencontrez des difficultés lors de la compilation suite à un problème de droits, lancez la commande en sudo:
->
-	sudo sh gepadbal.sh
-	
+sh gepadbal.sh
+> <img src="./images/warning.png" alt="warning" style="width:40px;"/> Si vous rencontrez des difficultés lors de la compilation suite à un problème de droits, lancez la commande en sudo:
+
+sudo sh gepadbal.sh
 <p id="serveur-web-droits"><a href="#top"><img src="./images/up.png" alt="up" style="width:40px;"/> HAUT</a></p>
 ### Modification des droits:
 
 Vous devez ajouter l'utilisateur apache aux droits du dossier par exemple:
 
-	chown -R www-data:www-data gepadbal
-	chmod 555 -R gepadbal
-
+chown -R www-data:www-data gepadbal
+chmod 555 -R gepadbal
 entrez ensuite dans le dossier:
 
-	cd gepadbal
-
+cd gepadbal
 ajouter les droits d'écriture aux dossiers logs public et var:
 
-	chmod 775 -R ./logs ./public ./var ./config/gepadbal
+chmod 775 -R ./logs ./public ./var ./config/gepadbal
 <p id="serveur-web-vhost"><a href="#top"><img src="./images/up.png" alt="up" style="width:40px;"/> HAUT</a></p>
 ### Configuration du virtual host:
 
 Votre virtual host devra pointer vers le répertoire public du dossier d'installation:
 
-	#<VirtualHost *:443>
-	<VirtualHost *:80>
-	        ServerName gepadbal
-	
-	        ServerAdmin webmaster@localhost
-	        DocumentRoot /var/www/gepadbal/public
-	
-	        <Directory /var/www/gepadbal/public/>
-	                DirectoryIndex index.php
-	                FallbackResource /index.php
-	                Options FollowSymLinks
-	                AllowOverride All
-	                Require all granted
-	                <ifModule mod_rewrite.c>
-	                        RewriteEngine On
-	                </ifModule>
-	        </Directory>
-	
-	        ErrorLog ${APACHE_LOG_DIR}/error-gepadbal.log
-	        CustomLog ${APACHE_LOG_DIR}/access-gepadbal.log combined
-	
-	        Header set Access-Control-Allow-Origin "*"
-	
-	#       SSLEngine on
-	#       SSLCertificateFile /etc/apache2/server.crt
-	#       SSLCertificateKeyFile /etc/apache2/server.key
-	</VirtualHost>
-	
+#<VirtualHost *:443>
+<VirtualHost *:80>
+        ServerName gepadbal
+
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/gepadbal/public
+
+        <Directory /var/www/gepadbal/public/>
+                DirectoryIndex index.php
+                FallbackResource /index.php
+                Options FollowSymLinks
+                AllowOverride All
+                Require all granted
+                <ifModule mod_rewrite.c>
+                        RewriteEngine On
+                </ifModule>
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error-gepadbal.log
+        CustomLog ${APACHE_LOG_DIR}/access-gepadbal.log combined
+
+        Header set Access-Control-Allow-Origin "*"
+
+#       SSLEngine on
+#       SSLCertificateFile /etc/apache2/server.crt
+#       SSLCertificateKeyFile /etc/apache2/server.key
+</VirtualHost>
 Une fois configuré votre dns, vous pourrez ouvrir votre navigateur et vous rendre sur l'url:
 
-	http(s)://monserveur/gepadbal
-	
-<a href="#top"><img src="./images/up.png" alt="up" style="width:40px;"/> HAUT</a> 
+http(s)://monserveur/gepadbal
+<a href="#top"><img src="./images/up.png" alt="up" style="width:40px;"/> HAUT</a>
 
 <a href="./configuration.md"><img src="./images/next.png" alt="next" style="width:40px;"/>  Configuration</a>
