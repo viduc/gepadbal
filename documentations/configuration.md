@@ -1,5 +1,5 @@
 [pathDocumentation]: https://raw.githubusercontent.com/viduc/gepadbal/main/
-<link rel="stylesheet" type="text/css" media="all" href="../assets/styles/material/material-dashboard.css" />
+<link rel="stylesheet" type="text/css" media="all" href="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/styles/material/material-dashboard.css" />
 
 <div class="card">
     <div class="card-header card-header-info">
@@ -35,13 +35,10 @@
 						<a class="nav-link" href="#zimbra">Configuration Zimbra</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#serveur-web-compilation">Compilation</a>
+						<a class="nav-link" href="#cron">Configuration des tâches planifiées</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#serveur-web-droits">Modification des droits</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#serveur-web-vhost">Configuration du virtual host</a>
+						<a class="nav-link" href="#fin">Finalisation</a>
 					</li>
 				</ul>
 			</td>
