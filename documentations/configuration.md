@@ -1,6 +1,3 @@
-[pathDocumentation]: https://raw.githubusercontent.com/viduc/gepadbal/main/
-<link rel="stylesheet" type="text/css" media="all" href="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/styles/material/material-dashboard.css" />
-
 <div class="card">
     <div class="card-header card-header-info">
         <div class="d-flex justify-content-between">
