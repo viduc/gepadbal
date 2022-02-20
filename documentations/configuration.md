@@ -1,26 +1,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>E-GEPADBAL</title>
 <meta name="color-scheme" content="light dark">
 <link rel="stylesheet" href="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/css/github-markdown-dark.css">
-<style>
-	.markdown-body {
-		box-sizing: border-box;
-		min-width: 200px;
-		max-width: 980px;
-		margin: 0 auto;
-		padding: 45px;
-	}
-    @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #0d1117;
-            }
-        }
-	@media (max-width: 767px) {
-		.markdown-body {
-			padding: 15px;
-		}
-	}
-</style>
 <div class="markdown-body">
     <table class="table" style="border: 0; width: 100%">
         <tr>
