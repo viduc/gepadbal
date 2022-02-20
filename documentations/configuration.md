@@ -40,7 +40,7 @@
     <div style="width: 70%; padding-left: 3em; padding-right: 3em;">
         <p>
             <div style="float: left"><img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/warning.png" alt="warning" style="width:40px;"/></div>
-            <div style="margin-left: 5em">L'url vers laquelle vous êtes redirigé ne sera accessible qu'après avoir installé l'application et jusqu'à ce que 
+            <div style="margin-left: 25em">L'url vers laquelle vous êtes redirigé ne sera accessible qu'après avoir installé l'application et jusqu'à ce que 
             l'installation soit terminée. Une fois l'installation effectuée, cette url ne sera plus accesible (authenfication par CAS). 
             Les administrateurs authentifiés auront ensuite accès à une interface de configuration en cas de besoin de modification.</div>
         </p>
