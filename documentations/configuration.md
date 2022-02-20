@@ -1,6 +1,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<link rel="stylesheet" href="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/css/github-markdown-dark.css">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/css/github-markdown-light.css">
 <div class="markdown-body">
     <table class="table" style="border: 0; width: 100%">
         <tr>
