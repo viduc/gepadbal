@@ -5,5 +5,8 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="github-markdown" level="application" />
+    <orderEntry type="library" name="github-markdown-dark" level="application" />
+    <orderEntry type="library" name="github-markdown-light" level="application" />
   </component>
 </module>
