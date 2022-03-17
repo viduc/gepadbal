@@ -47,10 +47,13 @@ span
             <li class="nav-item">
                 <a class="nav-link" href="#installation-auto">Installation automatisée</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#docker">Image Docker</a>
+            </li>
         </ul>
     </div>
 
-L'application GEPADBAL peut être installée de deux façons différentes, soit depuis une image docker, soit sirectement sur un serveur web.
+L'application E-GEPADBAL peut être installée de deux façons différentes, soit depuis une image docker, soit sirectement sur un serveur web.
 
 <p id="serveur-web"></p>
 <h2>Installation sur un serveur web:</h2>
@@ -205,7 +208,7 @@ cd gepadbal
 sudo sh installation.sh
 ```
 
-<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_0.png" alt="script" style="width:800px;"/>
+<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_0.png" alt="script" style="width:400px;"/>
 
 <div style="width: 70%; padding-left: 3em; padding-right: 3em;">
     <p>
@@ -225,16 +228,54 @@ sudo sh installation.sh
         <div style="float: left"><img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/warning.png" alt="warning" style="width:40px;"/></div>
         <div style="margin-left: 45px">Si votre version de php n'est pas en 7.4, le script vous en informera et s'arrêtera</div>
     </p>
-</div>
+</div></br></br>
 <p>Une fois votre système configuré, le script vous demandera si vous souhaitez lancer l'installation de E-Gepadbal, répondez oui</p>
-<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_3.png" alt="script" style="width:800px;"/>
+<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_3.png" alt="script" style="width:800px;"/></br></br>
 <p>Comme vous êtes connecté en tant que ROOT, composer vous le signalera et vous demandera si vous souhaitez continuer, appuyez sur entrer</p>
-<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_4.png" alt="script" style="width:800px;"/>
+<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_4.png" alt="script" style="width:400px;"/></br></br>
 <p>Ensuite symfony/flex vous demandera si vous souhaitez installer différentes recettes, dites y à chaque fois</p>
-<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_5.png" alt="script" style="width:800px;"/>
-<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_6.png" alt="script" style="width:800px;"/>
-<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_7.png" alt="script" style="width:800px;"/>
-<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_8.png" alt="script" style="width:800px;"/>
+<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_5.png" alt="script" style="width:800px;"/></br></br>
+<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_6.png" alt="script" style="width:800px;"/></br></br>
+<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_7.png" alt="script" style="width:800px;"/></br></br>
+<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_8.png" alt="script" style="width:800px;"/></br></br>
 <p>Les dépendances Php et Javascript seront installées. Le système se chargera également de compiler la partie VueJs/Node</p>
 <p>Une fois le script terminé vous pouvez vous connecter à l'url que vous avez déterminé pour l'application et faire le paramètrage.</p>
+
+<p id="docker"><a href="#top"><img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/up.png" alt="up" style="width:40px;"/> HAUT</a></p>
+<h2>Image Docker</h2>
+
+Vous devez avoir préalablement installé :
+
+<h3> Installation sur poste client (dev, test)</h3>
+
+* [Docker Desktop](https://www.docker.com/products/docker-desktop)
+* [Docker Compose](https://docs.docker.com/compose/install/#install-compose) : *Déjà intégré à Docker Desktop sur Windows*
+
+<h3> Installation serveur :</h3>
+
+* [Docker Engine](https://docs.docker.com/engine/install/)
+* [Docker Compose](https://docs.docker.com/compose/install/#install-compose) : *Déjà intégré à Docker Desktop sur Windows*
+
+<h3> Démarrer le conteneur</h3>
+
+<p>Se placer à la racine du projet et lancer</p>
+
+```
+docker-compose up
+```
+
+<p>Pour démarrer en mode daemon vous pouvez ajouter l'option `-d`</p>
+
+```
+docker-compose up -d
+```
+
+<h3> Arreter le conteneur</h3>
+
+<p>Se placer à la racine du projet et lancer</p>
+
+```
+docker-compose down
+```
+
 </div>
