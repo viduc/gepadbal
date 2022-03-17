@@ -20,8 +20,8 @@ span
             </td>
         </tr>
     </table>
-<h1>E-GEPADBAL - Installation de l'application </h1>
-<div>
+    <h1>E-GEPADBAL - Installation de l'application </h1>
+    <div>
         <ul>
             <li class="nav-item">
                 <a class="nav-link" href="#serveur-web-configuration">Configuration minimum</a>
@@ -39,10 +39,16 @@ span
                 <a class="nav-link" href="#serveur-web-droits">Modification des droits</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="#nofile">Modification de la variable nofile</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="#serveur-web-vhost">Configuration du virtual host</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#installation-auto">Installation automatisée</a>
+            </li>
         </ul>
-</div>
+    </div>
 
 L'application GEPADBAL peut être installée de deux façons différentes, soit depuis une image docker, soit sirectement sur un serveur web.
 
@@ -51,21 +57,20 @@ L'application GEPADBAL peut être installée de deux façons différentes, soit 
 <p id="serveur-web-configuration"></p>
 <h3> Configuration du serveur web:</h3>
 
-* serveur linux 64 bits
-* apache + php 7
-* node js + npm (sudo apt install nodejs npm) + yarn (sudo npm install --global yarn)
-* git
-* composer
-* ext-soap (sudo apt install php-soap)
-* ext-zip (sudo apt install php-zip)
-* ext-curl (sudo apt install php-curl)
-* ext-dom (sudo apt install php-dom)
-* ext-xml (sudo apt install php-xml)
-* ext-ldap (sudo apt install php-ldap)
-* ext-mbstring (sudo apt install php-mbstring) (phpunit)
-
-<p id="serveur-web-sources"><a href="#top"><img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/up.png" alt="up" style="width:40px;"/> HAUT</a></p>
-<h3> Récuparation des sources:</h3>
+<ul>
+<li> serveur linux 64 bits</li>
+<li> apache + php 7.4</li>
+<li> node js + npm (sudo apt install nodejs npm) + yarn (sudo npm install --global yarn)</li>
+<li> git</li>
+<li> composer</li>
+<li> ext-soap (sudo apt install php-soap)</li>
+<li> ext-zip (sudo apt install php-zip)</li>
+<li> ext-curl (sudo apt install php-curl)</li>
+<li> ext-dom (sudo apt install php-dom)</li>
+<li> ext-xml (sudo apt install php-xml)</li>
+<li> ext-ldap (sudo apt install php-ldap)</li>
+<li> ext-mbstring (sudo apt install php-mbstring) (phpunit)</li>
+</ul>
 
 Dans une console, naviguez dans le dossier web de votre serveur (par exemple ./var/www) puis cloner le dépot:
 
@@ -79,15 +84,14 @@ git clone https://ledepot gepadbal
 
 ```
     cd gepadbal
-    composer install
+    composer install (ou php composer.phar install)
 ```
 
 <div style="width: 70%; padding-left: 3em; padding-right: 3em;">
     <p>
         <div style="float: left"><img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/warning.png" alt="warning" style="width:40px;"/></div>
-        <div style="margin-left: 45px">Si vous rencontrez des difficultés lors de l'installation des dépendances avec composer liées à des limites php, vous pouvez utilisez un fichier [composer.phar](https://getcomposer.org/download/latest-stable/composer.phar) puis dans une commande:
->
-> php -d memory_limit=-1 composer.phar install</div>
+        <div style="margin-left: 45px">Si vous rencontrez des difficultés lors de l'installation des dépendances avec composer liées à des limites php, vous pouvez utilisez la commande suivante:
+ php -d memory_limit=-1 composer.phar install</div>
     </p>
 </div>
 
@@ -95,7 +99,7 @@ git clone https://ledepot gepadbal
     <p>
         <div style="float: left"><img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/warning.png" alt="warning" style="width:40px;"/></div>
         <div style="margin-left: 45px">Lors de l'installation il vous sera demandé si vous souhaitez exécuter certaines recipes (symfony flex), accepter les recettes:
-        <p></p><img src="./images/recipe.png" alt="recipe" style="width:800px;"/></p></div>
+        <p></p><img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/recipe.png" alt="recipe" style="width:800px;"/></p></div>
     </p>
 </div>
 
@@ -148,6 +152,14 @@ ajouter les droits d'écriture aux dossiers logs public et var:
 chmod 775 -R ./logs ./public ./var ./config/gepadbal
 ```
 
+<p id="nofile"><a href="#top"><img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/up.png" alt="up" style="width:40px;"/> HAUT</a></p>
+<h3> Modification de la variable nofile</h3>
+Il est nécessaire de modifier la variable nofile pour l'utilisateur apache. Ouvrez une console et entrez la commande suivante:
+
+```
+sudo echo "www-data  -   nofile  16384" > /etc/security/limits.conf
+```
+
 <p id="serveur-web-vhost"><a href="#top"><img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/up.png" alt="up" style="width:40px;"/> HAUT</a></p>
 <h3> Configuration du virtual host</h3>
 
@@ -183,4 +195,46 @@ Une fois configuré votre dns, vous pourrez ouvrir votre navigateur et vous rend
 http(s)://monserveur/gepadbal
 ```
 
-<a href="#top"><img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/up.png" alt="up" style="width:40px;"/> HAUT</a></p>
+<p id="installation-auto"><a href="#top"><img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/up.png" alt="up" style="width:40px;"/> HAUT</a></p>
+<h3> Installation automatisée</h3>
+<p>Toutes les opérations précédentes peuvent être réalisées depuis un script bash d'installation.</p>
+<p>Une fois les sources récupérées, ouvrez une console et entrez dans le dossier gepadbal:</p>
+
+```
+cd gepadbal
+sudo sh installation.sh
+```
+
+<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_0.png" alt="script" style="width:800px;"/>
+
+<div style="width: 70%; padding-left: 3em; padding-right: 3em;">
+    <p>
+        <div style="float: left"><img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/warning.png" alt="warning" style="width:40px;"/></div>
+        <div style="margin-left: 45px">Il est impératif de lancer cette commande avec un compte root</div>
+    </p>
+</div>
+
+</br>
+<p>Vous serez ensuite guidé dans le processus de configuration du serveur (dépendances) puis dans l'installation de l'application via composer</p>
+<p>Le script vous demandera si vous souhaitez lancer la configuration, répondez oui</p>
+<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_1.png" alt="script" style="width:800px;"/>
+<p></p><p>L'installation se lancera automatiquent</p>
+<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_2.png" alt="script" style="width:800px;"/>
+<div style="width: 70%; padding-left: 3em; padding-right: 3em;">
+    <p>
+        <div style="float: left"><img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/warning.png" alt="warning" style="width:40px;"/></div>
+        <div style="margin-left: 45px">Si votre version de php n'est pas en 7.4, le script vous en informera et s'arrêtera</div>
+    </p>
+</div>
+<p>Une fois votre système configuré, le script vous demandera si vous souhaitez lancer l'installation de E-Gepadbal, répondez oui</p>
+<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_3.png" alt="script" style="width:800px;"/>
+<p>Comme vous êtes connecté en tant que ROOT, composer vous le signalera et vous demandera si vous souhaitez continuer, appuyez sur entrer</p>
+<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_4.png" alt="script" style="width:800px;"/>
+<p>Ensuite symfony/flex vous demandera si vous souhaitez installer différentes recettes, dites y à chaque fois</p>
+<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_5.png" alt="script" style="width:800px;"/>
+<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_6.png" alt="script" style="width:800px;"/>
+<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_7.png" alt="script" style="width:800px;"/>
+<img src="https://raw.githubusercontent.com/viduc/gepadbal/main/documentations/images/script_installation_8.png" alt="script" style="width:800px;"/>
+<p>Les dépendances Php et Javascript seront installées. Le système se chargera également de compiler la partie VueJs/Node</p>
+<p>Une fois le script terminé vous pouvez vous connecter à l'url que vous avez déterminé pour l'application et faire le paramètrage.</p>
+</div>
